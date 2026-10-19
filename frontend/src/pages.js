@@ -302,7 +302,7 @@ function renderDashboard() {
   return `<div class="page">
     <section class="hero">
       <div class="hero-left">
-        <div class="hero-badge">${ic('shield', 13)} 鸿升中学 · 教务专用</div>
+        <div class="hero-badge">${ic('shield', 13)} 定时开关机 · 无人值守</div>
         <h1>智能电源管理</h1>
         <div class="hero-sub">定时开关机 · 计划由 Windows 任务计划程序执行，关闭本程序后依然生效</div>
         <div class="hero-chips">
@@ -765,10 +765,10 @@ function renderSettings() {
     </section>
     <section class="card about">
       <div class="a-logo" style="color:#fff">${ic('power', 36)}</div>
-      <h3>鸿升中学 · 智能电源管理</h3>
+      <h3>智能电源管理</h3>
       <div class="a-ver">版本 ${esc(state.boot.version)} · 适用于 Windows 10 / 11</div>
-      <div class="a-org">开发者：鸿升中学 教务处</div>
-      <div class="a-copy">© 2025 鸿升中学 教务处<br>本软件仅供鸿升中学教学环境使用 · 计划任务基于 Windows 任务计划程序实现</div>
+      <div class="a-org">开发者：大先生</div>
+      <div class="a-copy">© 2025 大先生<br>计划任务基于 Windows 任务计划程序实现</div>
     </section>
   </div>`;
 }

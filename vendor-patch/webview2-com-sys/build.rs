@@ -1,5 +1,5 @@
 fn main() -> Result<()> {
-    // 鸿升中学本地补丁：主函数内使用 env::var 需要此导入
+    // 大先生本地补丁：主函数内使用 env::var 需要此导入
     #[allow(unused_imports)]
     use std::env;
 
@@ -10,7 +10,7 @@ fn main() -> Result<()> {
 
     println!("cargo:rustc-link-lib=advapi32");
 
-    // ===== 鸿升中学本地补丁 =====
+    // ===== 大先生本地补丁 =====
     // 让 GNU 工具链（x86_64-pc-windows-gnu）也能静态链接 MSVC 编译的
     // WebView2LoaderStatic.lib，使打包出的 exe 无需随附 WebView2Loader.dll。
     // 仅对 Windows 目标生效。
@@ -146,7 +146,7 @@ mod webview2_link {
             "WebView2Loader.dll.lib",
             "WebView2LoaderStatic.lib",
         ];
-        // 鸿升中学本地调整：只复制当前编译目标架构的库文件。
+        // 大先生本地调整：只复制当前编译目标架构的库文件。
         // 原版会遍历 arm64/x64/x86 三个目录，导致仓库里必须保留
         // 三份各 10MB 的静态库（源码包 31MB）；本项目仅发布 x64，
         // 因此按目标架构取单份即可，缺目录也不再报错。

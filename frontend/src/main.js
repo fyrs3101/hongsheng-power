@@ -46,7 +46,7 @@ function renderShell() {
   <aside class="sidebar">
     <div class="brand">
       <div class="brand-logo">${LOGO_SVG}</div>
-      <div class="brand-text"><b>鸿升中学</b><span>智能电源管理</span></div>
+      <div class="brand-text"><b>智能电源管理</b><span>定时开关机工具</span></div>
     </div>
     <nav class="nav">
       ${NAV.map(
@@ -56,12 +56,12 @@ function renderShell() {
     </nav>
     <div class="side-foot">
       <div class="side-ver">v${state.boot?.version || '1.0.0'}</div>
-      <div class="side-org">鸿升中学 · 教务处</div>
+      <div class="side-org">大先生 · 出品</div>
     </div>
   </aside>
   <div class="main">
     <header class="titlebar" data-tauri-drag-region>
-      <div class="tb-left">${ic('shield', 15)}<span>鸿升中学 · 智能电源管理</span></div>
+      <div class="tb-left">${ic('shield', 15)}<span>智能电源管理</span></div>
       <div class="tb-right">
         <button class="tb-btn" id="tb-min" title="最小化" aria-label="最小化">
           <svg viewBox="0 0 10 10" width="10" height="10"><path d="M0 5.5h10" /></svg>

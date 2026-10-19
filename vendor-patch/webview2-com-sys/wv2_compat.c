@@ -1,5 +1,5 @@
 /*
- * 鸿升中学 · 智能电源管理 —— WebView2 静态加载器 GNU 工具链兼容层
+ * 智能电源管理 —— WebView2 静态加载器 GNU 工具链兼容层
  *
  * 背景：webview2-com-sys 自带的 WebView2LoaderStatic.lib 由 MSVC 编译，
  * 静态链接到 GNU 工具链（x86_64-pc-windows-gnu）交叉编译出的 exe 时，

@@ -3,18 +3,18 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::PathBuf;
 
-// ============ 应用信息（鸿升中学） ============
+// ============ 应用信息（大先生） ============
 #[allow(dead_code)]
 pub const APP_NAME: &str = "鸿升智能电源管理";
-pub const APP_FULL_NAME: &str = "鸿升中学 · 智能电源管理";
+pub const APP_FULL_NAME: &str = "智能电源管理";
 #[allow(dead_code)]
-pub const APP_VERSION: &str = "1.0.7";
+pub const APP_VERSION: &str = "1.0.8";
 #[allow(dead_code)]
-pub const ORG: &str = "鸿升中学";
+pub const ORG: &str = "大先生";
 #[allow(dead_code)]
-pub const DEPARTMENT: &str = "教务处";
+pub const DEPARTMENT: &str = "";
 #[allow(dead_code)]
-pub const COPYRIGHT: &str = "© 2025 鸿升中学 教务处";
+pub const COPYRIGHT: &str = "© 2025 大先生";
 pub const RUN_KEY_NAME: &str = "鸿升智能电源管理";
 pub const TASK_PREFIX: &str = "HSPower_";
 pub const MAX_LOGS: usize = 300;

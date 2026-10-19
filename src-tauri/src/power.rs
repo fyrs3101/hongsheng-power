@@ -52,7 +52,7 @@ pub fn is_admin() -> bool {
     out.stdout.trim().eq_ignore_ascii_case("true")
 }
 
-const SLEEP_PS1: &str = r#"# 鸿升中学智能电源管理 - 睡眠辅助脚本
+const SLEEP_PS1: &str = r#"# 智能电源管理 - 睡眠辅助脚本
 $sig = '[DllImport("powrprof.dll")] public static extern bool SetSuspendState(bool Hibernate, bool ForceCritical, bool DisableWakeEvent);'
 try {
     $t = Add-Type -MemberDefinition $sig -Name HongshengSleep -Namespace HongshengPower -PassThru

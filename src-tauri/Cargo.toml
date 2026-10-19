@@ -1,8 +1,8 @@
 [package]
 name = "hongsheng-power"
-version = "1.0.7"
-description = "鸿升中学电脑自动开关机管理工具"
-authors = ["鸿升中学 教务处"]
+version = "1.0.8"
+description = "电脑自动开关机管理工具"
+authors = ["大先生"]
 edition = "2021"
 rust-version = "1.77"
 

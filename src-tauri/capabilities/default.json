@@ -1,7 +1,7 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "鸿升中学智能电源管理 默认窗口权限",
+  "description": "智能电源管理 默认窗口权限",
   "windows": ["main"],
   "permissions": [
     "core:default",

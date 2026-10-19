@@ -1,9 +1,9 @@
-# 鸿升中学 · 智能电源管理
+# 智能电源管理
 
-鸿升中学教务专用的 **Windows 电脑自动开关机管理工具**。定时计划由 Windows 任务计划程序（Task Scheduler）执行，关闭软件后依然生效。
+**Windows 电脑自动开关机管理工具**。定时计划由 Windows 任务计划程序（Task Scheduler）执行，关闭软件后依然生效。
 
-- **开发者 / 版权**：鸿升中学（教务处） © 2025
-- **版本**：v1.0.7
+- **开发者 / 版权**：大先生 © 2025
+- **版本**：v1.0.8
 - **技术栈**：Tauri v2（Rust）+ 原生 HTML/CSS/JS 前端 + Windows 任务计划程序
 
 ## 功能
@@ -50,7 +50,7 @@ npm run tauri build -- --target x86_64-pc-windows-gnu --bundles nsis
 产物位于 `src-tauri/target/x86_64-pc-windows-gnu/release/`：
 
 - `鸿升智能电源管理.exe` — 免安装便携版
-- `bundle/nsis/鸿升智能电源管理_1.0.7_x64-setup.exe` — 安装版
+- `bundle/nsis/鸿升智能电源管理_1.0.8_x64-setup.exe` — 安装版
 
 ### 版本号位置
 

@@ -1,9 +1,9 @@
 {
   "name": "hongsheng-power",
   "private": true,
-  "version": "1.0.7",
+  "version": "1.0.8",
   "type": "module",
-  "description": "鸿升中学电脑自动开关机管理工具",
+  "description": "电脑自动开关机管理工具",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

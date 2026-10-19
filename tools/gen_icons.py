@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""生成鸿升中学智能电源管理图标（应用图标 + 托盘图标）"""
+"""生成智能电源管理图标（应用图标 + 托盘图标）"""
 from PIL import Image, ImageDraw
 import math
 import os

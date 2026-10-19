@@ -29,7 +29,7 @@ fn main() {
             app.manage(AppState::new(store, cfg, is_admin));
 
             if let Err(e) = power::build_tray(app.handle()) {
-                eprintln!("[鸿升智能电源管理] 托盘创建失败: {}", e);
+                eprintln!("[智能电源管理] 托盘创建失败: {}", e);
             }
 
             // Win11 原生圆角窗口（无边框窗口不会自动获得 DWM 圆角）
@@ -107,5 +107,5 @@ fn main() {
             commands::clear_logs,
         ])
         .run(tauri::generate_context!())
-        .expect("运行鸿升智能电源管理失败");
+        .expect("运行智能电源管理失败");
 }

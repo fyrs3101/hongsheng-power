@@ -54,7 +54,7 @@ export function ic(name, size = 18, extra = '') {
   return `<svg class="ic ${extra}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 }
 
-/** 品牌 Logo（鸿升中学 · 电源 + 时钟） */
+/** 品牌 Logo（电源 + 时钟） */
 export const LOGO_SVG = `<svg width="26" height="26" viewBox="0 0 48 48" fill="none">
 <circle cx="24" cy="26" r="11.5" stroke="#fff" stroke-width="3.2" opacity="0.95"/>
 <path d="M24 8.5v6.5" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>

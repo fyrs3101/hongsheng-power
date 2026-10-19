@@ -1,0 +1,85 @@
+鸿升智能电源管理 v1.0.7 —— 源码说明
+=====================================
+
+开发者 / 版权：鸿升中学 教务处  © 2025
+
+一、源码包含什么
+----------------
+hongsheng-power/
+├── frontend/            前端（原生 HTML/CSS/JS，Vite 构建）
+│   ├── index.html
+│   └── src/             main.js、pages.js、components.js、styles.css、icons.js、api.js、util.js
+├── src-tauri/           Rust 后端（Tauri v2）
+│   ├── src/             main.rs、commands.rs、ps.rs、power.rs、config.rs
+│   ├── icons/           应用与托盘图标
+│   ├── capabilities/    窗口权限配置
+│   ├── tauri.conf.json  窗口、打包、版本配置
+│   └── Cargo.toml
+├── vendor-patch/        WebView2 静态链接补丁（重要，勿删）
+├── tools/               图标生成与说明书排版脚本
+├── README.md            完整技术说明
+├── package.json
+└── vite.config.js
+
+已排除：node_modules（依赖）、src-tauri/target（编译缓存，约 3.8GB）、dist（前端产物）。
+
+二、构建环境
+------------
+- Node.js ≥ 18
+- Rust ≥ 1.77（stable）
+- 在 Windows 上开发需安装 "Microsoft Visual C++ 生成工具"（MSVC 工具链）
+- 在 Linux 上交叉编译需安装 mingw-w64：apt install mingw-w64 nsis libayatana-appindicator3-dev
+
+三、快速构建
+------------
+  npm install                                  # 安装前端依赖
+  rustup target add x86_64-pc-windows-gnu      # 仅交叉编译时需要
+  npm run tauri build -- --target x86_64-pc-windows-gnu --bundles nsis
+
+若要直接在 Windows 本机构建（产物更小、无需交叉工具链）：
+  npm run tauri build
+产物位置：src-tauri/target/release/bundle/nsis/
+
+四、关键实现说明（便于二次开发）
+--------------------------------
+1. 定时计划存放在 Windows 任务计划程序中，任务名格式 HSPower_<id前8位>，
+   因此关闭软件后计划依然生效。软件自身的配置存于
+   %APPDATA%\cn.hongsheng.power\config.json。
+2. 所有 PowerShell 调用均使用 -EncodedCommand（UTF-16LE + Base64）传参，
+   规避中文与引号转义问题；脚本内强制
+   [Console]::OutputEncoding = [System.Text.Encoding]::UTF8，
+   输出统一按 UTF-8 解码，避免中文 Windows 上的乱码。
+3. 子进程统一加 CREATE_NO_WINDOW 标志，并设置 30 秒超时强制结束，
+   防止任务计划服务异常时界面卡死。
+4. 时间类操作（倒计时、下次执行时间）在前端每秒刷新，不重绘整个页面。
+
+五、常见问题
+------------
+Q: 提示「找不到 WebView2Loader.dll」
+A: 说明用了未打补丁的 webview2-com-sys。本项目通过
+   src-tauri/Cargo.toml 的 [patch.crates-io] 指向 vendor-patch/ 下的
+   本地补丁，务必保留该目录。验证方法：
+   objdump -p hongsheng-power.exe | grep -i webview
+   无输出即为正确（已静态链接）。
+
+Q: 打包时报 timeout: global 或 TLS peer closed connection
+A: NSIS 需要从 GitHub 下载 nsis_tauri_utils.dll，网络波动导致。
+   exe 本体已编译完成，直接重跑打包命令即可。
+
+Q: 编译提示找不到 arm64/x86 目录
+A: 源码已精简为只保留 x64 架构的 WebView2 库（节省 20MB）。
+   如需其它架构，从 webview2-com-sys 原 crate 拷回对应目录，
+   并恢复 build.rs 中的多架构遍历逻辑。
+
+Q: 改版本号后界面版本没变
+A: 需同步修改四处：package.json、src-tauri/tauri.conf.json、
+   src-tauri/Cargo.toml、src-tauri/src/config.rs 的 APP_VERSION。
+
+六、卸载 / 清理
+---------------
+软件写入系统的内容只有：
+- 任务计划程序中的 HSPower_* 条目（在软件内删除计划即可清除）
+- %APPDATA%\cn.hongsheng.power\ 配置目录
+删除上述两项即完全清理干净。
+
+© 2025 鸿升中学 教务处

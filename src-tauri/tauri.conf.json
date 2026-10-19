@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/tauri-apps/tauri/dev/crates/tauri-config-schema/schema.json",
+  "productName": "鸿升智能电源管理",
+  "version": "1.0.7",
+  "identifier": "cn.hongsheng.power",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "鸿升中学 · 智能电源管理",
+        "width": 1100,
+        "height": 720,
+        "minWidth": 940,
+        "minHeight": 640,
+        "center": true,
+        "resizable": true,
+        "decorations": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "copyright": "© 2025 鸿升中学 教务处",
+    "publisher": "鸿升中学",
+    "category": "Utility",
+    "shortDescription": "鸿升中学电脑自动开关机管理工具",
+    "longDescription": "鸿升中学教务专用电脑自动开关机管理工具：支持定时关机、重启、睡眠、休眠、锁定与定时开机唤醒，计划由 Windows 任务计划程序执行，稳定可靠。",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": ["SimpChinese"]
+      }
+    }
+  }
+}

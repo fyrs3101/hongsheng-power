@@ -1,0 +1,25 @@
+[package]
+name = "hongsheng-power"
+version = "1.0.7"
+description = "鸿升中学电脑自动开关机管理工具"
+authors = ["鸿升中学 教务处"]
+edition = "2021"
+rust-version = "1.77"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon", "image-png"] }
+tauri-plugin-single-instance = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+encoding_rs = "0.8"
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["clock"] }
+sha2 = "0.10"
+
+# 本地 patch：让 webview2-com-sys 在 GNU 工具链交叉编译时也静态链接
+# WebView2LoaderStatic.lib，免安装版无需随附 WebView2Loader.dll
+[patch.crates-io]
+webview2-com-sys = { path = "../vendor-patch/webview2-com-sys" }

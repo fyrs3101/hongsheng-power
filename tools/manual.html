@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 18mm 22mm 18mm;
+    @bottom-center {
+      content: "鸿升中学 · 智能电源管理 使用说明书 — 第 " counter(page) " 页";
+      font-size: 9px; color: #98a2b3;
+      font-family: "Noto Sans CJK SC", sans-serif;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+    color: #1a2433; font-size: 10.5pt; line-height: 1.75; margin: 0;
+  }
+  .cover { text-align: center; padding: 70px 0 46px; }
+  .cover .logo {
+    width: 84px; height: 84px; border-radius: 24px; margin: 0 auto 22px;
+    background: linear-gradient(135deg, #2e5bff, #6d4df6);
+    display: inline-grid; place-items: center;
+    box-shadow: 0 14px 34px rgba(46,91,255,.35);
+  }
+  .cover .logo svg { color: #fff; }
+  .cover h1 { font-size: 24pt; margin: 0 0 6px; letter-spacing: 2px; }
+  .cover .sub { color: #475467; font-size: 11pt; letter-spacing: 4px; margin-bottom: 26px; }
+  .cover .org { display: inline-block; padding: 6px 22px; border-radius: 999px;
+    background: #eef3ff; color: #2e5bff; font-weight: 700; font-size: 11pt; letter-spacing: 2px; }
+  .cover .meta { margin-top: 34px; color: #667085; font-size: 10pt; line-height: 2; }
+  h2 {
+    font-size: 14pt; color: #12295e; margin: 26px 0 10px;
+    padding: 7px 0 7px 14px; border-left: 5px solid #2e5bff;
+    background: linear-gradient(90deg, #eef3ff, transparent);
+    page-break-after: avoid;
+  }
+  h3 { font-size: 11.5pt; color: #1a2433; margin: 16px 0 6px; page-break-after: avoid; }
+  p { margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 9.8pt; page-break-inside: avoid; }
+  th { background: #12295e; color: #fff; padding: 7px 10px; text-align: left; font-weight: 600; }
+  td { border: 1px solid #dfe4ee; padding: 6px 10px; vertical-align: top; }
+  tr:nth-child(even) td { background: #f7f9fd; }
+  ol, ul { padding-left: 22px; margin: 6px 0; }
+  li { margin: 3px 0; }
+  .tip {
+    background: #fffaf0; border: 1px solid #f5d9a0; border-radius: 8px;
+    padding: 9px 14px; margin: 10px 0; font-size: 9.8pt; color: #7a4a00;
+    page-break-inside: avoid;
+  }
+  .info {
+    background: #f0f7ff; border: 1px solid #bfdbfe; border-radius: 8px;
+    padding: 9px 14px; margin: 10px 0; font-size: 9.8pt; color: #1d4ed8;
+    page-break-inside: avoid;
+  }
+  .qa { margin: 8px 0; page-break-inside: avoid; }
+  .qa .q { font-weight: 700; color: #12295e; }
+  .qa .a { color: #344054; }
+  .copyright {
+    margin-top: 30px; padding: 14px 18px; border-radius: 10px;
+    background: #12295e; color: #dbe4ff; font-size: 9.5pt; text-align: center; line-height: 1.9;
+  }
+  .steps { counter-reset: step; list-style: none; padding-left: 0; }
+  .steps li {
+    counter-increment: step; position: relative; padding-left: 34px; margin: 8px 0;
+  }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 1px;
+    width: 22px; height: 22px; border-radius: 7px; text-align: center;
+    background: linear-gradient(135deg, #2e5bff, #6d4df6); color: #fff;
+    font-weight: 700; font-size: 10pt; line-height: 22px;
+  }
+  b.k { color: #b42318; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="logo">
+    <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="26" r="11.5" stroke="#fff" stroke-width="3.2" opacity="0.95"/>
+      <path d="M24 8.5v6.5" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M33.2 18.2A11.5 11.5 0 1 1 14.8 18.2" stroke="#fff" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+      <path d="M24 26V20.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M24 26l4.2 2.8" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <h1>智能电源管理</h1>
+  <div class="sub">电脑自动开关机管理工具 · 使用说明书</div>
+  <div class="org">鸿升中学 教务专用</div>
+  <div class="meta">
+    版本 v1.0.0 ｜ 适用系统 Windows 10 / 11（64 位）<br>
+    开发者：鸿升中学（教务处）
+  </div>
+</div>
+
+<h2>一、软件简介</h2>
+<p>「鸿升中学 · 智能电源管理」用于学校机房的电脑自动开关机集中管理，支持定时关机、重启、睡眠、休眠、锁定与定时开机唤醒。全部计划由 <b>Windows 任务计划程序</b>执行，关闭本软件后定时任务依然生效。</p>
+<table>
+  <tr><th style="width:34%">功能</th><th>说明</th></tr>
+  <tr><td>定时关机 / 重启 / 睡眠 / 休眠 / 锁定</td><td>按每天 / 每周 / 工作日 / 周末 / 仅一次自动执行</td></tr>
+  <tr><td>定时开机（唤醒）</td><td>到点自动唤醒处于睡眠 / 休眠状态的电脑</td></tr>
+  <tr><td>立即执行</td><td>五种电源动作，带 5 秒安全确认倒计时</td></tr>
+  <tr><td>倒计时执行</td><td>关机 / 重启由系统接管（退出程序仍生效）</td></tr>
+  <tr><td>开机自动启动 / 托盘驻留</td><td>登录后自动运行，关闭窗口最小化到托盘</td></tr>
+  <tr><td>管理密码</td><td>防止学生误改、误删计划</td></tr>
+  <tr><td>运行日志</td><td>记录计划创建与执行，便于排查</td></tr>
+</table>
+
+<h2>二、安装与运行</h2>
+<h3>安装版（推荐机房批量部署）</h3>
+<p>双击 <b>鸿升智能电源管理_1.0.0_x64-setup.exe</b>，按提示完成安装（当前用户安装，无需管理员密码），从桌面或开始菜单启动。</p>
+<h3>便携版（免安装）</h3>
+<p>直接双击 <b>鸿升智能电源管理.exe</b>，可拷贝到 U 盘或任意目录使用。</p>
+<div class="tip">软件基于 Microsoft Edge WebView2 运行时。Windows 11 已内置；Windows 10 若首次运行提示缺少组件，请安装 Evergreen WebView2 Runtime（微软官网免费下载）。</div>
+<h3>建议：以管理员身份运行</h3>
+<p>在「系统设置 → 运行权限」中点击「以管理员身份重启」。管理员模式下计划以 SYSTEM 账户执行，<b class="k">即使电脑停在登录界面也能正常开关机</b>；标准模式仅在已登录时生效。</p>
+
+<h2>三、快速上手</h2>
+<h3>1. 创建定时关机计划（示例：每天 21:30 关机）</h3>
+<ol class="steps">
+  <li>左侧菜单点击「定时计划 → 新建计划」；</li>
+  <li>填写名称（如“晚自习后关机”），执行动作选择「关机」；</li>
+  <li>重复方式选择「每天」，时间设为 21:30；</li>
+  <li>点击「创建计划」。到时间后电脑自动关机，请提前提醒学生保存作业。</li>
+</ol>
+<h3>2. 创建定时开机计划（示例：工作日 7:00 唤醒）</h3>
+<ol class="steps">
+  <li>左侧菜单点击「定时开机 → 新建唤醒计划」；</li>
+  <li>动作已预设为「定时开机」，重复方式选择「工作日」，时间 07:00；</li>
+  <li>保存后，电脑处于睡眠 / 休眠状态时会自动唤醒开机。</li>
+</ol>
+<h3>3. 立即操作与倒计时</h3>
+<p>「立即操作」页提供五种动作的一键执行（5 秒确认倒计时，可取消）；「倒计时执行」支持 1~1440 分钟，其中关机 / 重启由 Windows 接管，退出程序仍然生效。</p>
+
+<h2>四、定时开机（BIOS 设置指引）</h2>
+<p>电脑完全关机（S5）时自动开机，需要主板支持并在 BIOS 中开启定时开机：</p>
+<ol class="steps">
+  <li>开机时连续按 Del / F2 / F10（部分品牌为 F1 / Esc）进入 BIOS；</li>
+  <li>找到「电源管理（Power Management）」；</li>
+  <li>将「Resume by RTC Alarm / Power On By Alarm / RTC 唤醒 / 定时开机」设为 Enabled；</li>
+  <li>闹钟时间设为每天首次上课前，例如 07:00；保存退出（通常按 F10）。</li>
+</ol>
+<div class="info">不同品牌菜单名称略有差异（联想、惠普、戴尔、华硕、宏碁、同方等）。<b>建议用法：</b>放学时对电脑执行「休眠」而非「关机」，次日用唤醒计划自动开机，省电又免去逐台开机。</div>
+
+<h2>五、系统设置</h2>
+<table>
+  <tr><th style="width:36%">设置项</th><th>建议</th></tr>
+  <tr><td>开机自动启动</td><td>开启（定时计划本身不依赖本软件运行）</td></tr>
+  <tr><td>关闭窗口时最小化到托盘</td><td>开启</td></tr>
+  <tr><td>管理密码</td><td>设置，防止学生修改 / 删除计划</td></tr>
+  <tr><td>运行权限</td><td>以管理员身份运行</td></tr>
+</table>
+<p>数据目录：<b>%APPDATA%\cn.hongsheng.power\config.json</b>（设置页可一键打开）。删除该文件将清空全部计划与日志。</p>
+
+<h2>六、常见问题</h2>
+<div class="qa"><div class="q">Q1：到时间没有关机？</div>
+<div class="a">确认计划已启用（列表开关为蓝色）；确认电脑已登录（标准模式）；无人登录时请以管理员身份运行本软件；并在「运行日志」查看执行记录。</div></div>
+<div class="qa"><div class="q">Q2：定时开机没生效？</div>
+<div class="a">电脑必须处于睡眠 / 休眠状态才能被软件唤醒；完全关机需在 BIOS 开启 RTC 唤醒；在「定时开机」页查看电源能力检测，若休眠不可用可一键开启。</div></div>
+<div class="qa"><div class="q">Q3：睡眠和休眠有什么区别？</div>
+<div class="a">睡眠：内存保持供电，恢复快但断电丢会话；休眠：会话保存到硬盘后断电，恢复稍慢但不怕断电，适合过夜。</div></div>
+<div class="qa"><div class="q">Q4：忘记管理密码怎么办？</div>
+<div class="a">关闭软件，打开数据目录删除 config.json 后重启（计划需重新创建）。</div></div>
+<div class="qa"><div class="q">Q5：如何卸载？</div>
+<div class="a">安装版通过控制面板卸载；便携版直接删除文件夹，并先在设置中关闭开机自动启动。</div></div>
+
+<div class="copyright">
+  软件名称：鸿升中学 · 智能电源管理 ｜ 版本 v1.0.0<br>
+  开发者 / 版权：鸿升中学（教务处）© 2025<br>
+  本软件仅供鸿升中学教学环境内部使用
+</div>
+
+</body>
+</html>

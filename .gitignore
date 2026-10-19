@@ -1,0 +1,41 @@
+# ===== Rust / Tauri 构建产物 =====
+/src-tauri/target/
+/target/
+**/*.rs.bk
+
+# ===== Node / 前端 =====
+/node_modules/
+/dist/
+/.vite/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ===== 编译中间文件 =====
+*.o
+*.a2
+*.exe.bak
+*.pdb
+*.ilk
+
+# ===== 调试与崩溃转储 =====
+core
+core.*
+*.dmp
+crash.log
+
+# ===== 编辑器与系统 =====
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ===== 本地环境与密钥 =====
+.env
+.env.local
+*.pem
+/tmp/
+
+# 本地排版测试产物
+tools/manual_test.pdf

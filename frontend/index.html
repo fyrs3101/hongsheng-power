@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>鸿升中学 · 智能电源管理</title>
+    <style>
+      /* 界面加载失败时的降级提示：即使 WebView2 渲染异常或前端脚本出错，
+         也保证用户能重试或关闭程序，不会卡死在空白窗口里 */
+      #boot-fallback {
+        display: none;
+        position: fixed; inset: 0; z-index: 999;
+        flex-direction: column; align-items: center; justify-content: center;
+        gap: 14px; padding: 40px; text-align: center;
+        font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        background: #f5f7fb; color: #33406b;
+      }
+      #boot-fallback h3 { font-size: 17px; margin: 0; }
+      #boot-fallback p { font-size: 13px; color: #6b7699; margin: 0; line-height: 1.8; max-width: 460px; }
+      #boot-fallback .bf-btns { display: flex; gap: 12px; margin-top: 6px; }
+      #boot-fallback button {
+        height: 36px; padding: 0 22px; border-radius: 9px; border: none;
+        font-size: 13px; font-weight: 600; cursor: pointer;
+      }
+      #boot-fallback .bf-retry { background: #2e5bff; color: #fff; }
+      #boot-fallback .bf-close { background: #fff; color: #33406b; border: 1px solid #d9dfea; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="boot-fallback">
+      <h3>界面加载异常</h3>
+      <p>
+        程序界面未能正常启动（可能是系统 WebView2 组件异常）。您可以先尝试重试；
+        如果反复出现，请关闭本窗口后，右键程序图标选择「以管理员身份」运行。
+      </p>
+      <div class="bf-btns">
+        <button class="bf-retry" onclick="location.reload()">重试</button>
+        <button class="bf-close" onclick="closeApp()">关闭程序</button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      // 主程序 6 秒内未启动则显示降级界面
+      setTimeout(function () {
+        if (!window.__APP_BOOTED__) {
+          document.getElementById('boot-fallback').style.display = 'flex';
+        }
+      }, 6000);
+      function closeApp() {
+        try {
+          if (window.__TAURI__ && window.__TAURI__.invoke) {
+            window.__TAURI__.invoke('plugin:window|close');
+          } else {
+            window.close();
+          }
+        } catch (e) {
+          window.close();
+        }
+      }
+    </script>
+  </body>
+</html>
